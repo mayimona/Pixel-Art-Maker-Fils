@@ -1,14 +1,18 @@
 // Select color input
 // Select size input
 
-var gridHeight = document.getElementById('inputHeight');
-var gridWidth = document.getElementById('inputWidth');
-var colorvalue = document.getElementById('colorPicker');
-var canvas = document.getElementById('pixelCanvas');
-var formInfo = document.getElementById('sizePicker'); 
+let gridHeight = document.getElementById('inputHeight');
+let gridWidth = document.getElementById('inputWidth');
+let colorvalue = document.getElementById('colorPicker');
+let canvas = document.getElementById('pixelCanvas');
+let formInfo = document.getElementById('sizePicker'); 
 let selectedColor = '';
 let canvasHasData = false;
 
+/**
+* Prevent Form from resubmitting and redirecting url when onsubmit
+* was clicked
+*/
 formInfo.onsubmit = function(event){
     event.preventDefault();
     makeGrid();
@@ -31,16 +35,20 @@ function makeGrid() {
     console.log(selectedColor);
 
     for (let r = 0; r < gridHeight.value; r++) {
-        var row = canvas.insertRow(r);
+        let row = canvas.insertRow(r);
         canvasHasData = true;
         for (let c = 0; c < gridWidth.value; c++) {
-            var cell = row.insertCell(c);
+            let cell = row.insertCell(c);
             cell.addEventListener("click", onCellClicked);
         }
     }
 
 };
 
+/**
+* Clear The canvas if there is data and check if there is
+* data on startup using canvasHasData
+*/
 function clearGrid() {
     let r = canvas.rows.length - 1;
     canvasHasData = canvas.rows.length > 0 ? true : false
