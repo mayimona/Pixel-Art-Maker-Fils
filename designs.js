@@ -13,15 +13,16 @@ function makeGrid() {
     clearGrid();
     //console.log('test');
     console.log(gridWidth.value);
-    console.log(canvas.value);
     // Your code goes here!
     selectedColor = colrvalue.value;
+    console.log(selectedColor);
+
 
     for (let r = 0; r < gridHeight.value; r++) {
         var row = canvas.insertRow(r);
         for (let c = 0; c < gridWidth.value; c++) {
             var cell = row.insertCell(c);
-            cell.addEventListner("click", onCellClicked(selectedColor, cell));
+           // cell.addEventListner("click", onCellClicked(selectedColor, cell));
         }
     }
 
